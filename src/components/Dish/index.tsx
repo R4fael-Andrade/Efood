@@ -1,4 +1,4 @@
-import {Card, Infos, ContainerTitle, Title, Star, Description, Assessment, Image} from './styles'
+import {Card, Infos, ContainerTitle, Title, Star, Description, Assessment, Image, More} from './styles'
 import Tag from '../Tag'
 import sushi from '../../assets/images/sushi.png'
 import star from '../../assets/images/estrela.png'

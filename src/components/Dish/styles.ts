@@ -44,4 +44,19 @@ export const Description = styled.p`
 
 export const Image = styled.img`
     width: 100%;
+    height: 217px;
+`
+
+export const More = styled.a`
+    background-color: ${cores.laranja};
+    color: ${cores.branco};
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 4px ;
+    /* margin-left: 8px; */
+    display: inline-block;
+    /* margin-bottom: 12px; */
+    position: absolute;
+    bottom: 0;
+    left: 8px;
 `
