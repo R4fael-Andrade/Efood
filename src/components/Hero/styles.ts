@@ -8,7 +8,6 @@ export const HeroContainer = styled.div`
     display: block;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
     position: relative;
 `
 

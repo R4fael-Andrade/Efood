@@ -1,6 +1,5 @@
-import {Card, Infos, ContainerTitle, Title, Star, Description, Assessment, Image, More} from './styles'
+import {Card, Infos, ContainerTitle, Title, Star, Description, Assessment, Image, More, ButtonLink} from './styles'
 import Tag from '../Tag'
-import sushi from '../../assets/images/sushi.png'
 import star from '../../assets/images/estrela.png'
 
 type Props = {
@@ -29,7 +28,7 @@ const Dish = ({title, description, image, infos, assessment}: Props) => (
         <Description>
             {description}
         </Description>
-        <Tag size='normal'>Saiba mais</Tag>
+        <ButtonLink to="/food">Saiba mais</ButtonLink>
 
     </Card>
 )

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
+import { Link } from "react-router-dom";
 
 export const Card = styled.div`
     width: 472px;
@@ -53,10 +54,20 @@ export const More = styled.a`
     font-size: 14px;
     font-weight: bold;
     padding: 6px 4px ;
-    /* margin-left: 8px; */
     display: inline-block;
-    /* margin-bottom: 12px; */
     position: absolute;
     bottom: 0;
     left: 8px;
+`
+
+export const ButtonLink = styled(Link)`
+    background-color: ${cores.laranja};
+    color: ${cores.branco};
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 4px;
+    margin-left: 8px;
+    display: inline-block;
+    margin-bottom: 12px;
+    text-decoration: none;
 `
