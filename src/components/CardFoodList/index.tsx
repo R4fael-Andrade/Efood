@@ -1,9 +1,9 @@
-import Food from '../../models/Dish'
+import Dish from '../../models/Dish'
 import CardFood from '../CardFood'
 import {List} from './styles'
 
-export type Props = {
-    food: Food[]
+type Props = {
+    food: Dish[]
 }
 
 const CardFoodList = ({food}: Props) => (
@@ -11,6 +11,9 @@ const CardFoodList = ({food}: Props) => (
         <List>
         {food.map((f) => ( 
             <CardFood 
+                id={f.id}
+                assessment={f.assessment}
+                infos={f.infos}
                 image={f.image}
                 title={f.title}
                 description={f.description}
