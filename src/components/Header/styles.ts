@@ -7,11 +7,18 @@ export const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    @media (max-width: 738px) {
+        display: block;
+        text-align: center;
+        padding: 16px;
+    }
 `
 
 export const Titles = styled.h2`
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
 `
 
 export const LogoImg = styled.img`
@@ -19,6 +26,10 @@ export const LogoImg = styled.img`
     height: 57px;
     top: 64px;
     left: 45%;
+    
+    @media (max-width: 768px) {
+        margin: 15px 0;
+    }
 `
 
 export const ContainerPresentation = styled.div`
@@ -35,6 +46,10 @@ export const TagPresentation = styled.p`
     left: 170px;
     color: #fff;
     font-weight: 100;
+
+    @media (max-width: 768px) {
+        left: 20px;
+    }
 `
 
 export const TitlePresentation = styled.h2`
@@ -45,4 +60,7 @@ export const TitlePresentation = styled.h2`
     color: #fff;
     font-size: 32px;
 
+    @media (max-width: 768px) {
+        left: 20px;
+    }
 `

@@ -6,6 +6,10 @@ export const Card = styled.div`
     background-color: ${cores.laranja};
     padding: 8px;
     margin: 0;
+
+    @media (max-width: 768px) {
+        margin-bottom: 16px;
+    }
     `
 
 export const Image = styled.img`

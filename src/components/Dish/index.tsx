@@ -29,7 +29,6 @@ const Dish = ({title, description, image, infos, assessment}: Props) => (
             {description}
         </Description>
         <ButtonLink to="/food">Saiba mais</ButtonLink>
-
     </Card>
 )
 

@@ -11,7 +11,6 @@ const Profile = () => (
         <CardFoodList food={informations} />
         <Footer />
     </>
-    
 )
 
 export default Profile

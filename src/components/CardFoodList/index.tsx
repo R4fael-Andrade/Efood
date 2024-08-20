@@ -18,8 +18,7 @@ const CardFoodList = ({food}: Props) => (
                 title={f.title}
                 description={f.description}
                 key={f.id}
-            />
-                
+            />     
         ))}
         </List>
     </div>

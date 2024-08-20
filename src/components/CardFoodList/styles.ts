@@ -7,4 +7,7 @@ export const List = styled.ul`
     margin-top: 56px;
     margin-bottom: 120px;
 
+    @media (max-width: 768px) {
+        display: block;
+    }
 `

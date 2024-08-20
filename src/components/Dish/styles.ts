@@ -7,6 +7,11 @@ export const Card = styled.div`
     border: 1px solid ${cores.laranja};
     position: relative;
     background-color: #fff;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 16px;
+    }
 `
 
 export const Infos = styled.div`
