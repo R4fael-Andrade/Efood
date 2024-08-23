@@ -13,6 +13,17 @@ export const HeaderContainer = styled.div`
         text-align: center;
         padding: 16px;
     }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: 738px) {
+        display: block;
+        text-align: center;
+        padding: 16px;
+    }
+}
 `
 
 export const Titles = styled.h2`
@@ -43,7 +54,6 @@ export const TagPresentation = styled.p`
     font-size: 32px;
     position: absolute;
     top: 25px;
-    left: 170px;
     color: #fff;
     font-weight: 100;
 
@@ -56,7 +66,6 @@ export const TitlePresentation = styled.h2`
     font-weight: bold;
     position: absolute;
     bottom: 32px;
-    left: 170px;
     color: #fff;
     font-size: 32px;
 

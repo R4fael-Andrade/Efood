@@ -10,17 +10,23 @@ const Header = () => {
     return (
         <>
             <HeaderContainer style={{backgroundImage: `url(${fundoHeader})`}} >
-            <Titles>Restaurantes</Titles>
-            <LogoImg src={logoImg} />
-            <Titles> {itens.length} produto(s) no carrinho</Titles>
+                
+               <div className="container">
+               <Titles>Restaurantes</Titles>
+                <LogoImg src={logoImg} />
+                <Titles> {itens.length} produto(s) no carrinho</Titles>
+               </div>
+                
             </HeaderContainer>
             <ContainerPresentation style={{backgroundImage: `url(${apresentacao})`}}>
+                <div className="container">
                 <TagPresentation>
                     Italiana
                 </TagPresentation>
                 <TitlePresentation>
                     La Dolce Vita Trattoria
                 </TitlePresentation>
+                </div>
             </ContainerPresentation>
         </>
     )

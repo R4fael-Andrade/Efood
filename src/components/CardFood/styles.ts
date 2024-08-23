@@ -36,3 +36,80 @@ export const ButtonAdicionar = styled.button`
     border: none;
     cursor: pointer;
 `
+
+export const Modal =  styled.div`
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    
+    
+    &.visivel {
+        display: flex;
+    }
+    
+    .overlay {
+        position: absolute;
+        top:0;
+        left: 0;
+        width:100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    `
+
+export const ModalContent = styled.div`
+    width: 1024px;
+    position: relative;
+    z-index: 1;
+    padding: 32px;
+    background-color: ${cores.laranja};
+    
+    header {
+        display: flex;
+        justify-content:end;
+        align-items: center;
+
+        > img {
+        display: block;
+        max-width: 100%;
+        cursor: pointer;
+    }
+
+    }
+    
+    .inforCard {
+        display: flex;
+        /* flex-direction: column; */
+        > img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            margin-right: 32px; 
+        } 
+
+        ${ButtonAdicionar} {
+            max-width: 218px;
+            width: 100%;
+        }
+    }
+    
+    
+    
+    h3 {
+    color: ${cores.branco};
+    font-size: 18px;
+    font-weight: bold;
+}
+
+p { 
+        margin: 16px 0;
+        color: ${cores.branco};
+        font-size: 14px;
+    }
+`
