@@ -1,22 +1,26 @@
-import DishClass from '../../models/Dish'
+
 import Dish from '../Dish'
-import { List,Container } from './styles'
+import { List, Container } from './styles'
+import { Restaurante } from '../../pages/Home'
 
 export type Props = {
-    dish: DishClass[]
+    dish: Restaurante[]
 }
 
-const DishList = ({dish}: Props) => (
+const DishList = ({ dish }: Props) => (
     <Container>
         <List>
             {dish.map((infor) => (
                 <Dish 
+                    avaliacao={infor.avaliacao}
+                    titulo={infor.titulo}
+                    tipo={infor.tipo}
+                    capa={infor.capa}
                     key={infor.id}
-                    title={infor.title}
-                    description={infor.description}
-                    assessment={infor.assessment}
-                    infos={infor.infos}
-                    image={infor.image}
+                    id={infor.id}
+                    cardapio={infor.cardapio}
+                    destacado={infor.destacado}
+                    descricao={infor.descricao}
                 />
             ))}
         </List>

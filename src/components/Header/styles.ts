@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
@@ -30,6 +31,13 @@ export const Titles = styled.h2`
     font-size: 18px;
     font-weight: bold;
     text-align: center;
+`
+
+export const LinkTitle = styled(Link)`
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
 `
 
 export const LogoImg = styled.img`

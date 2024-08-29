@@ -35,6 +35,7 @@ export const ButtonAdicionar = styled.button`
     width: 100%;
     border: none;
     cursor: pointer;
+    font-weight: bold;
 `
 
 export const Modal =  styled.div`

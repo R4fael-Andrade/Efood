@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
-import { ButtonAdicionar } from "../CardFood/styles";
 
 export const List = styled.ul`
     display: grid;

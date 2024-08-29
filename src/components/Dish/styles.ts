@@ -51,6 +51,7 @@ export const Description = styled.p`
 export const Image = styled.img`
     width: 100%;
     height: 217px;
+    object-fit: cover;
 `
 
 export const More = styled.a`

@@ -1,4 +1,4 @@
-import {HeroContainer, Title, LogoImg} from './styles'
+import { HeroContainer, Title, LogoImg } from './styles'
 
 import bannerImg from '../../assets/images/fundo.png'
 import logo from '../../assets/images/logoEfood.png'

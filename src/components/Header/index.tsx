@@ -1,4 +1,4 @@
-import {HeaderContainer, Titles, LogoImg, ContainerPresentation, TagPresentation, TitlePresentation} from './styles'
+import {HeaderContainer, Titles, LogoImg, ContainerPresentation, TagPresentation, TitlePresentation, LinkTitle} from './styles'
 
 import fundoHeader from '../../assets/images/fundo.png'
 import logoImg from '../../assets/images/logoEfood.png'
@@ -11,11 +11,11 @@ const Header = () => {
         <>
             <HeaderContainer style={{backgroundImage: `url(${fundoHeader})`}} >
                 
-               <div className="container">
-               <Titles>Restaurantes</Titles>
+                <div className="container">
+                <LinkTitle to="/">Restaurantes</LinkTitle>
                 <LogoImg src={logoImg} />
                 <Titles> {itens.length} produto(s) no carrinho</Titles>
-               </div>
+                </div>
                 
             </HeaderContainer>
             <ContainerPresentation style={{backgroundImage: `url(${apresentacao})`}}>

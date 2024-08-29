@@ -5,49 +5,46 @@ import { adicionar } from "../../store/reducers/carrinho";
 
 import close from "../../assets/images/fechar.png";
 import { useState } from "react";
-
-type Props = {
-    image: string;
-    title: string;
-    description: string;
-    id: number;
-    infos: string[];
-    assessment: string;
-};
+import { CardapioItem } from '../../pages/Home'
 
 const CardFood = ({
-    image,
-    title,
-    description,
+    descricao,
+    foto,
     id,
-    infos,
-    assessment,
-}: Props) => {
+    nome,
+    preco,
+    porcao
+
+}: CardapioItem) => {
     const dispatch = useDispatch();
+    const [modalOpen, setModalOpen] = useState(false);
+    
+
 
     const handleAdicionarAoCarrinho = () => {
     const item = {
-        image,
-        title,
-        description,
+        descricao,
+        foto,
         id,
-        assessment,
-        infos,
-        };
+        nome,
+        preco,
+        porcao
+};
     dispatch(adicionar(item));
     };
 
-    const [modalOpen, setModalOpen] = useState(false);
     return (
     <>
+        <li key={id}>
         <S.Card onClick={() => setModalOpen(true)}>
-        <S.Image src={image} />
-        <S.Title>{title}</S.Title>
-        <S.Description>{description}</S.Description>
+        <S.Image src={foto} />
+        <S.Title>{nome}</S.Title>
+        <S.Description>{descricao.slice(0, 240) + '...'}</S.Description>
         <S.ButtonAdicionar onClick={handleAdicionarAoCarrinho}>
             Adicionar ao carrinho
         </S.ButtonAdicionar>
         </S.Card>
+        </li>
         <S.Modal className={modalOpen ? "visivel" : ""}>
         <S.ModalContent className="container">
             <header>
@@ -58,12 +55,13 @@ const CardFood = ({
             />
             </header>
             <div className="inforCard">
-            <img src={image} alt={title} />
+            <img src={foto} alt={nome} />
             <div>
-                <h3>{title}</h3>
-                <p>{description}</p>
+                <h3>{nome}</h3>
+                <p>{descricao}</p>
+                <p>Serve de {porcao} </p>
                 <S.ButtonAdicionar onClick={handleAdicionarAoCarrinho}>
-                Adicionar ao carrinho
+                Adicionar ao carrinho - R${preco}0
                 </S.ButtonAdicionar>
             </div>
         </div>
