@@ -120,6 +120,7 @@ p {
             img {
             margin: 8px 0;
             height: 100%;
+            width: 100%;
             }
         }
     }
