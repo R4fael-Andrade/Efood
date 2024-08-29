@@ -7,10 +7,12 @@ export const Card = styled.div`
     border: 1px solid ${cores.laranja};
     position: relative;
     background-color: #fff;
+    height: 400px;
 
     @media (max-width: 768px) {
         width: 100%;
         margin-bottom: 16px;
+        height: 440px;
     }
 `
 
@@ -72,8 +74,9 @@ export const ButtonLink = styled(Link)`
     font-size: 14px;
     font-weight: bold;
     padding: 6px 4px;
-    margin-left: 8px;
     display: inline-block;
-    margin-bottom: 12px;
     text-decoration: none;
+    position: absolute;
+    bottom: 12px;
+    left: 8px;
 `

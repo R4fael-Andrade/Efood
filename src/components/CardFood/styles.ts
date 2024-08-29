@@ -86,7 +86,6 @@ export const ModalContent = styled.div`
     
     .inforCard {
         display: flex;
-        /* flex-direction: column; */
         > img {
             width: 280px;
             height: 280px;
@@ -112,5 +111,16 @@ p {
         margin: 16px 0;
         color: ${cores.branco};
         font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+        display: block;
+        .inforCard {
+            display: block;
+            img {
+            margin: 8px 0;
+            height: 100%;
+            }
+        }
     }
 `

@@ -13,6 +13,7 @@ export const HeaderContainer = styled.div`
         display: block;
         text-align: center;
         padding: 16px;
+        
     }
 
     .container {
@@ -20,9 +21,11 @@ export const HeaderContainer = styled.div`
         justify-content: space-between;
 
         @media (max-width: 738px) {
-        display: block;
+        display: flex;
         text-align: center;
         padding: 16px;
+        flex-direction: column;
+        align-items: center;
     }
 }
 `
