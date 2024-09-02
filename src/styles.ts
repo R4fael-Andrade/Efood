@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import styled, {createGlobalStyle} from 'styled-components'
 
 export const cores = {
     laranja: '#E66767',
@@ -31,4 +31,15 @@ export const GlobalCss = createGlobalStyle`
             width: 100%;
         }
     }
+`
+
+export const ButtonAdicionar = styled.button`
+    background-color: ${cores.branco};
+    color: ${cores.laranja};
+    font-size: 14px; 
+    padding: 4px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
 `

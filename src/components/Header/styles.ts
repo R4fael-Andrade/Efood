@@ -34,6 +34,7 @@ export const Titles = styled.h2`
     font-size: 18px;
     font-weight: bold;
     text-align: center;
+    cursor: pointer;
 `
 
 export const LinkTitle = styled(Link)`

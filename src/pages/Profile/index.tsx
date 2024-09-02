@@ -6,6 +6,7 @@ import CardFoodList from "../../components/CardFoodList"
 import Footer from "../../components/Footer"
 import Header from "../../components/Header"
 import { CardapioItem } from "../Home"
+import Cart from "../../components/Cart"
 
 
 const Profile = () => {
@@ -28,6 +29,7 @@ const Profile = () => {
             
                 <Header />
                 <CardFoodList food={pratos} />
+                <Cart />
                 <Footer />
             </>
         )

@@ -3,10 +3,18 @@ import {HeaderContainer, Titles, LogoImg, ContainerPresentation, TagPresentation
 import fundoHeader from '../../assets/images/fundo.png'
 import logoImg from '../../assets/images/logoEfood.png'
 import apresentacao from '../../assets/images/imgApresentacao.png'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/carrinho'
+
 const Header = () => {
     const itens = useSelector((state:RootReducer) => state.carrinho.itens)
+    const dispatch = useDispatch()
+
+    const openCart = () => {
+        dispatch(open())
+    }
+
     return (
         <>
             <HeaderContainer style={{backgroundImage: `url(${fundoHeader})`}} >
@@ -14,7 +22,7 @@ const Header = () => {
                 <div className="container">
                 <LinkTitle to="/">Restaurantes</LinkTitle>
                 <LogoImg src={logoImg} />
-                <Titles> {itens.length} produto(s) no carrinho</Titles>
+                <Titles onClick={openCart} > {itens.length} produto(s) no carrinho</Titles>
                 </div>
                 
             </HeaderContainer>

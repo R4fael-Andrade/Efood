@@ -1,11 +1,19 @@
 import { useDispatch } from "react-redux";
 import * as S from "./styles";
+import {ButtonAdicionar} from '../../styles'
 
 import { adicionar } from "../../store/reducers/carrinho";
 
 import close from "../../assets/images/fechar.png";
 import { useState } from "react";
 import { CardapioItem } from '../../pages/Home'
+
+export const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    }).format(preco)
+}
 
 const CardFood = ({
     descricao,
@@ -40,9 +48,9 @@ const CardFood = ({
         <S.Image src={foto} />
         <S.Title>{nome}</S.Title>
         <S.Description>{descricao.slice(0, 240) + '...'}</S.Description>
-        <S.ButtonAdicionar onClick={handleAdicionarAoCarrinho}>
+        <ButtonAdicionar onClick={handleAdicionarAoCarrinho}>
             Adicionar ao carrinho
-        </S.ButtonAdicionar>
+        </ButtonAdicionar>
         </S.Card>
         </li>
         <S.Modal className={modalOpen ? "visivel" : ""}>
@@ -60,9 +68,9 @@ const CardFood = ({
                 <h3>{nome}</h3>
                 <p>{descricao}</p>
                 <p>Serve de {porcao} </p>
-                <S.ButtonAdicionar onClick={handleAdicionarAoCarrinho}>
-                Adicionar ao carrinho - R${preco}0
-                </S.ButtonAdicionar>
+                <ButtonAdicionar onClick={handleAdicionarAoCarrinho}>
+                Adicionar ao carrinho - {formataPreco(preco)}
+                </ButtonAdicionar>
             </div>
         </div>
         </S.ModalContent>
