@@ -7,7 +7,6 @@ import { formataPreco } from '../CardFood'
 
 const Cart = () => {
     const {isOpen, itens} = useSelector((state: RootReducer) => state.carrinho)
-    
     const dispatch = useDispatch()
 
     const closeCart = () => {
@@ -34,8 +33,8 @@ const Cart = () => {
                     <S.Cartitem key={item.id}>
                         <img src={item.foto} alt={item.nome} />
                         <div>
-                            <h3> {item.nome} </h3>
-                            <p>R$ {item.preco}0 </p>
+                            <h3>{item.nome}</h3>
+                            <p>{formataPreco(item.preco)}</p>
                         </div>
                         <button type='button' onClick={() => removeItem(item.id)} />
                     </S.Cartitem>
@@ -43,7 +42,7 @@ const Cart = () => {
                     ))}
                     <S.BarInfor>
                         <p>Valor total</p>
-                        <span>{formataPreco(getTotalPrice())} </span>
+                        <span>{formataPreco(getTotalPrice())}</span>
                     </S.BarInfor>
                 </ul>
                 <ButtonAdicionar>Continuar com a entrega</ButtonAdicionar>
