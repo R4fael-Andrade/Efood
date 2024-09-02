@@ -40,11 +40,11 @@ const Cart = () => {
                     </S.Cartitem>
                 </>
                     ))}
+                </ul>
                     <S.BarInfor>
                         <p>Valor total</p>
                         <span>{formataPreco(getTotalPrice())}</span>
                     </S.BarInfor>
-                </ul>
                 <ButtonAdicionar>Continuar com a entrega</ButtonAdicionar>
             </S.Sidebar>      
     </S.CartContainer >
