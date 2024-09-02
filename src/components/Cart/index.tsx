@@ -24,8 +24,6 @@ const Cart = () => {
         dispatch(remove(id))
     }
 
-
-
     return (
     <S.CartContainer className={isOpen ? 'is-open' : ''}>
         <S.Overlay onClick={closeCart} />
@@ -45,7 +43,7 @@ const Cart = () => {
                     ))}
                     <S.BarInfor>
                         <p>Valor total</p>
-                        <span>R$ {formataPreco(getTotalPrice())} </span>
+                        <span>{formataPreco(getTotalPrice())} </span>
                     </S.BarInfor>
                 </ul>
                 <ButtonAdicionar>Continuar com a entrega</ButtonAdicionar>
