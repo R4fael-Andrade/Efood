@@ -8,7 +8,6 @@ import Header from "../../components/Header"
 import { CardapioItem } from "../Home"
 import Cart from "../../components/Cart"
 
-
 const Profile = () => {
     const { id } = useParams()
     
@@ -26,14 +25,12 @@ const Profile = () => {
     return (
         (
             <>
-            
                 <Header />
                 <CardFoodList food={pratos} />
                 <Cart />
                 <Footer />
             </>
         )
-        
     )
 }
 export default Profile

@@ -32,8 +32,6 @@ const Home = () => {
         console.log(pratos)
     }, [pratos])
 
-    
-
     return (
         <>
             <Hero />
@@ -42,6 +40,5 @@ const Home = () => {
         </>
     )
 }
-
 
 export default Home

@@ -38,7 +38,6 @@ export const Modal =  styled.div`
     align-items: center;
     z-index: 1;
     
-    
     &.visivel {
         display: flex;
     }
@@ -70,8 +69,7 @@ export const ModalContent = styled.div`
         max-width: 100%;
         cursor: pointer;
     }
-
-    }
+}
     
     .inforCard {
         display: flex;
@@ -88,15 +86,13 @@ export const ModalContent = styled.div`
         }
     }
     
-    
-    
     h3 {
     color: ${cores.branco};
     font-size: 18px;
     font-weight: bold;
 }
 
-p { 
+    p { 
         margin: 16px 0;
         color: ${cores.branco};
         font-size: 14px;

@@ -26,7 +26,7 @@ const Footer = () => (
                 </li>
             </List>
             <Description>
-            A efood é uma plataforma para divulgação de estabelecimentos, a responsabilidade pela entrega, qualidade dos produtos é toda do estabelecimento contratado.
+                A efood é uma plataforma para divulgação de estabelecimentos, a responsabilidade pela entrega, qualidade dos produtos é toda do estabelecimento contratado.
             </Description>
     </FooterContainer>
 )

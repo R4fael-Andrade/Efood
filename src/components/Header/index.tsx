@@ -18,22 +18,20 @@ const Header = () => {
     return (
         <>
             <HeaderContainer style={{backgroundImage: `url(${fundoHeader})`}} >
-                
                 <div className="container">
                 <LinkTitle to="/">Restaurantes</LinkTitle>
                 <LogoImg src={logoImg} />
                 <Titles onClick={openCart} > {itens.length} produto(s) no carrinho</Titles>
                 </div>
-                
             </HeaderContainer>
             <ContainerPresentation style={{backgroundImage: `url(${apresentacao})`}}>
                 <div className="container">
-                <TagPresentation>
-                    Italiana
-                </TagPresentation>
-                <TitlePresentation>
-                    La Dolce Vita Trattoria
-                </TitlePresentation>
+                    <TagPresentation>
+                        Italiana
+                    </TagPresentation>
+                    <TitlePresentation>
+                        La Dolce Vita Trattoria
+                    </TitlePresentation>
                 </div>
             </ContainerPresentation>
         </>

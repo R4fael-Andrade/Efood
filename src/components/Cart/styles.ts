@@ -63,6 +63,7 @@ export const Cartitem = styled.li`
     h3 {
         margin-bottom: 16px;
     }
+    
     button {
         background-image: url(${lixeira});
         background-color: transparent;
