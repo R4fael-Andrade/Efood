@@ -7,6 +7,7 @@ import { adicionar } from "../../store/reducers/carrinho";
 import close from "../../assets/images/fechar.png";
 import { useState } from "react";
 import { CardapioItem } from '../../pages/Home'
+import { open } from "../../store/reducers/carrinho";
 
 export const formataPreco = (preco = 0) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -36,6 +37,7 @@ const CardFood = ({
             porcao
         };
     dispatch(adicionar(item));
+    dispatch(open())
     };
 
     return (
