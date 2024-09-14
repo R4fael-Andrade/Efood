@@ -39,10 +39,15 @@ export const Sidebar = styled.aside`
 
     ul {
         display: block;
+        
     }
 
     ${ButtonAdicionar} {
         background-color: ${cores.footer};
+    }
+
+    .hidden-cart {
+        display: none;
     }
     `
 

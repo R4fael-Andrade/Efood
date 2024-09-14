@@ -2,12 +2,15 @@ import * as S from './styles'
 import {ButtonAdicionar} from '../../styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import {close, remove} from '../../store/reducers/carrinho'
+import {close, remove, hidden} from '../../store/reducers/carrinho'
 import { formataPreco } from '../CardFood'
+import Checkout from '../Checkout'
+import { useState } from 'react'
 
 const Cart = () => {
-    const {isOpen, itens} = useSelector((state: RootReducer) => state.carrinho)
+    const {isOpen, itens, isHidden} = useSelector((state: RootReducer) => state.carrinho)
     const dispatch = useDispatch()
+    const [continuarEntrega, setContinuarEntrega] = useState(false)
 
     const closeCart = () => {
         dispatch(close())
@@ -23,10 +26,15 @@ const Cart = () => {
         dispatch(remove(id))
     }
 
+    const exibirEntrega = () => {
+        dispatch(hidden())
+    }
+
     return (
     <S.CartContainer className={isOpen ? 'is-open' : ''}>
         <S.Overlay onClick={closeCart} />
             <S.Sidebar>
+                <div className={!isHidden ? '' : 'hidden-cart'}>
                 <ul>
                     {itens.map((item) => (
                 <>
@@ -45,7 +53,12 @@ const Cart = () => {
                         <p>Valor total</p>
                         <span>{formataPreco(getTotalPrice())}</span>
                     </S.BarInfor>
-                <ButtonAdicionar>Continuar com a entrega</ButtonAdicionar>
+                <ButtonAdicionar onClick={exibirEntrega}>Continuar com a entrega</ButtonAdicionar>
+                </div>
+                    {isHidden && (
+                        <Checkout />
+                    )}
+                
             </S.Sidebar>      
     </S.CartContainer >
     )
