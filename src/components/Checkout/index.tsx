@@ -3,18 +3,25 @@ import * as Yup from 'yup'
 import { ButtonAdicionar } from "../../styles"
 import * as S from './styles'
 import { useDispatch, useSelector } from "react-redux"
-import { display} from '../../store/reducers/carrinho'
+import { display, paymentOpen } from '../../store/reducers/carrinho'
 import { usePurchaseMutation } from "../../services/api"
 import { RootReducer } from "../../store"
 import Button from "../Button"
+import { useState } from "react"
+import { formataPreco } from "../CardFood"
 
 const Checkout = () => {
     const [ purchase, {data, isSuccess, isLoading} ] = usePurchaseMutation()
-    const {itens} = useSelector((state: RootReducer) => state.carrinho)
+    const {itens, menuCardOpen} = useSelector((state: RootReducer) => state.carrinho)
+    const [isPaymentFormVisible, setPaymentFormVisible] = useState(false)
     const dispatch = useDispatch()
 
     const returnCart = () => {
         dispatch(display())
+    }
+
+    const openPayment = () => {
+        dispatch(paymentOpen())
     }
 
     const form = useFormik({
@@ -24,12 +31,7 @@ const Checkout = () => {
             cidade: '',
             cep: '',
             numero: '',
-            complemento: '',
-            nameCard: '',
-            numberCard: '',
-            codeCard: '',
-            expiresMonth: '',
-            expiresYear: ''
+            complemento: ''
         },
         validationSchema: Yup.object({
             destinatario: Yup.string().min(5, 'O nome precisa ter pelo menos 5 caracteres').required('O campo é obrigatório'),
@@ -40,25 +42,46 @@ const Checkout = () => {
             complemento: Yup.string().required('O campo é obrigatório')
         }),
         onSubmit: (values) => {
+            setPaymentFormVisible(true)
+        }
+    })
+
+    const paymentForm = useFormik({
+        initialValues: {
+            nameCard: '',
+            numberCard: '',
+            codeCard: '',
+            expiresMonth: '',
+            expiresYear: ''
+        },
+        validationSchema: Yup.object({
+            nameCard: Yup.string().required('O campo é obrigatório'),
+            numberCard: Yup.string().min(16, 'O número do cartão deve conter 16 dígitos').max(16, 'O número do cartão deve conter 16 dígitos').required('O campo é obrigatório'),
+            codeCard: Yup.string().min(3, 'O código deve ter 3 dígitos').max(3, 'O código deve conter 3 dígitos').required('O campo é obrigatório'),
+            expiresMonth: Yup.string().min(2, 'O campo deve ter 2 dígitos').max(2, 'O campo deve ter 2 dígitos').required('O campo é obrigatório'),
+            expiresYear: Yup.string().min(2, 'O campo deve ter 2 dígitos').max(2, 'O campo deve ter 2 dígitos').required('O campo é obrigatório')
+
+        }),
+        onSubmit: (paymentsValues) => {
             purchase({
                 delivery: {
-                    receiver: values.destinatario,
+                    receiver: form.values.destinatario,
                     adress: {
-                        description: values.endereco,
-                        city: values.cidade,
-                        zipCode: values.cep,
-                        numberHouse: Number(values.numero),
-                        complement: values.complemento
+                        description: form.values.endereco,
+                        city: form.values.cidade,
+                        zipCode: form.values.cep,
+                        numberHouse: Number(form.values.numero),
+                        complement: form.values.complemento
                     }
                 },
                 payment: {
                     card: {
-                        name: values.nameCard,
-                        numberCard: values.numberCard,
-                        code: Number(values.codeCard),
+                        name: paymentsValues.nameCard,
+                        numberCard: paymentsValues.numberCard,
+                        code: Number(paymentsValues.codeCard),
                         expires: {
-                            month: Number(values.expiresMonth),
-                            year: Number(values.expiresYear)
+                            month: Number(paymentsValues.expiresMonth),
+                            year: Number(paymentsValues.expiresYear)
                         }
                     }
                 },
@@ -74,12 +97,14 @@ const Checkout = () => {
         const isTouched = fieldName in form.touched
         const isInvalid = fieldName in form.errors
         const hasError = isTouched && isInvalid
-
         return hasError
     }
 
     return (
-        <S.Form>
+        <>
+            {!isPaymentFormVisible && (
+            <>
+            <S.Form>
             <h2>Entrega</h2>
             <label htmlFor="destinatario">Quem irá receber</label>
             <input type="text" id="destinatario" 
@@ -138,7 +163,7 @@ const Checkout = () => {
     
             <Button
             title="Clique aqui para finalizar a compra"
-            type="submit"
+            type="button"
             onClick={form.handleSubmit}
             disabled={isLoading}
             >
@@ -147,8 +172,76 @@ const Checkout = () => {
     
             <ButtonAdicionar onClick={returnCart}>
                 Voltar para o carrinho
-            </ButtonAdicionar>
-        </S.Form>
+                </ButtonAdicionar>
+                </S.Form>
+            </>
+        )}
+
+            {isPaymentFormVisible && (
+                <>
+                <S.Form onSubmit={paymentForm.handleSubmit}>
+                    <h2>Pagamento - valor a pagar {formataPreco()} </h2>
+                    <label htmlFor="nameCard">Nome no cartão</label>
+                    <input type="text" id="nameCard"
+                    name="nameCard"
+                    value={paymentForm.values.nameCard}
+                    onChange={paymentForm.handleChange}
+                    onBlur={paymentForm.handleBlur}
+                    className={checkInputHasError('nameCard') ? 'error' : ''}
+                    />
+                    <label htmlFor="numberCard">Número do cartão</label>
+                    <input type="text" id="numberCard"
+                    name="numberCard"
+                    value={paymentForm.values.numberCard}
+                    onChange={paymentForm.handleChange}
+                    onBlur={paymentForm.handleBlur}
+                    className={checkInputHasError('numberCard') ? 'error' : ''}
+                    />
+                    <label htmlFor="codeCard">CVV</label>
+                    <input type="text" id="codeCard"
+                    name="codeCard"
+                    value={paymentForm.values.codeCard}
+                    onChange={paymentForm.handleChange}
+                    onBlur={paymentForm.handleBlur}
+                    className={checkInputHasError('codeCard') ? 'error' : ''}
+                    />
+                    <label htmlFor="expiresMonth">Mês de vencimento</label>
+                    <input type="text" id="expiresMonth"
+                    name="expiresMonth"
+                    value={paymentForm.values.expiresMonth}
+                    onChange={paymentForm.handleChange}
+                    onBlur={paymentForm.handleBlur}
+                    className={checkInputHasError('expiresMonth') ? 'error' : ''}
+                    />
+                    <label htmlFor="expiresYear">Ano de vencimento</label>
+                    <input type="text" id="expiresYear"
+                    name="expiresYear"
+                    value={paymentForm.values.expiresYear}
+                    onChange={paymentForm.handleChange}
+                    onBlur={paymentForm.handleBlur}
+                    className={checkInputHasError('expiresYear') ? 'error' : ''}
+                    />
+                    <Button
+                    title="Finalizar compra"
+                    type="submit"
+                    disabled={isLoading}
+                    onClick={paymentForm.handleSubmit}
+                    >
+                        Finalizar compra
+                    </Button>
+                    <Button
+                    title="Finalizar compra"
+                    type="button"
+                    disabled={isLoading}
+                    onClick={() => setPaymentFormVisible(false)}
+                    >
+                        Voltar para edição de endereço 
+                    </Button>
+                </S.Form>
+                </>
+            )}
+
+        </>
     )
 }
 

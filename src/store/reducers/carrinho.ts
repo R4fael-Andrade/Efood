@@ -5,12 +5,14 @@ type CarrinhoState = {
     itens: CardapioItem[]
     isOpen: boolean
     isHidden: boolean
+    menuCardOpen: boolean
 }
 
 const initialState: CarrinhoState = {
     itens: [],
     isOpen: false,
-    isHidden: false
+    isHidden: false,
+    menuCardOpen: false
 }
 
 const carrinhoSlice = createSlice({
@@ -40,9 +42,12 @@ const carrinhoSlice = createSlice({
         },
         display: (state) => {
             state.isHidden = false
+        },
+        paymentOpen: (state) => {
+            state.menuCardOpen = true
         }
     }
 })
 
-export const { adicionar, close, open, remove, hidden, display } = carrinhoSlice.actions
+export const { adicionar, close, open, remove, hidden, display, paymentOpen } = carrinhoSlice.actions
 export default carrinhoSlice.reducer

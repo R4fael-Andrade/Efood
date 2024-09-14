@@ -5,12 +5,11 @@ import { RootReducer } from '../../store'
 import {close, remove, hidden} from '../../store/reducers/carrinho'
 import { formataPreco } from '../CardFood'
 import Checkout from '../Checkout'
-import { useState } from 'react'
+
 
 const Cart = () => {
     const {isOpen, itens, isHidden} = useSelector((state: RootReducer) => state.carrinho)
     const dispatch = useDispatch()
-    const [continuarEntrega, setContinuarEntrega] = useState(false)
 
     const closeCart = () => {
         dispatch(close())
