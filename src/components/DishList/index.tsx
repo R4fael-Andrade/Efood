@@ -2,12 +2,16 @@
 import Dish from '../Dish'
 import { List, Container } from './styles'
 import { Restaurante } from '../../pages/Home'
+import { useEffect } from 'react'
 
 export type Props = {
     dish: Restaurante[]
 }
 
-const DishList = ({ dish }: Props) => (
+const DishList = ({ dish }: Props) => {
+
+
+    return (
     <Container>
         <List>
             {dish.map((infor) => (
@@ -25,6 +29,6 @@ const DishList = ({ dish }: Props) => (
             ))}
         </List>
     </Container>
-)
+)}
 
 export default DishList

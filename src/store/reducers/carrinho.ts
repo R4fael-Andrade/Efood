@@ -45,9 +45,12 @@ const carrinhoSlice = createSlice({
         },
         paymentOpen: (state) => {
             state.menuCardOpen = true
+        },
+        clear: (state) => {
+            state.itens = []
         }
     }
 })
 
-export const { adicionar, close, open, remove, hidden, display, paymentOpen } = carrinhoSlice.actions
+export const { adicionar, close, open, remove, hidden, display, paymentOpen, clear } = carrinhoSlice.actions
 export default carrinhoSlice.reducer

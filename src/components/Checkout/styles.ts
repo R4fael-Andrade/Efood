@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ButtonAdicionar, cores } from "../../styles";
+import Button from "../Button";
 
 export const Form  =styled.form`
     h2 {
@@ -19,10 +20,6 @@ export const Form  =styled.form`
         height: 32px;
         width: 100%;
         margin: 8px 0;
-
-        &.error {
-            border: 2px solid red; 
-        }
     }
 
     ${ButtonAdicionar} {
@@ -34,4 +31,24 @@ export const Form  =styled.form`
         width: 100%;
         justify-content: space-between;
     }
+
+    .error {
+            border: 2px solid red; 
+        }
+`
+
+export const Confirmation = styled.div`
+    h2 {
+        font-size: 16px;
+        color: ${cores.branco};
+        margin-bottom: 16px;
+    }
+
+    p {
+        font-size: 14px;
+        color: ${cores.branco};
+        line-height: 22px;
+        margin-bottom: 24px;
+    }
+
 `

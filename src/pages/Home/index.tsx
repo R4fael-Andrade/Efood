@@ -25,17 +25,16 @@ export  type Restaurante = {
 }
 
 const Home = () => {
-    const [pratos, setPratos] = useState<Restaurante[]>([])
+    const [restaurant, setRestaurant] = useState<Restaurante[]>([])
     useEffect(() => {
         fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-        .then((res) => res.json().then((res) => setPratos(res)))
-        console.log(pratos)
-    }, [pratos])
+        .then((res) => res.json().then((res) => setRestaurant(res)))
+    }, [])
 
     return (
         <>
             <Hero />
-            <DishList dish={pratos} />
+            <DishList dish={restaurant} />
             <Footer />
         </>
     )
