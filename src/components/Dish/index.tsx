@@ -1,31 +1,30 @@
-
-import {Card, Infos, ContainerTitle, Title, Star, Description, Assessment, Image, ButtonLink} from './styles'
 import Tag from '../Tag'
-import star from '../../assets/images/estrela.png'
 import { Restaurante } from '../../pages/Home'
 
+import star from '../../assets/images/estrela.png'
+import * as S from './styles'
 
 const Dish = ({id, avaliacao, capa, cardapio, destacado, tipo, titulo, descricao}: Restaurante) => {
         
     return (
         <>
-            <Card>
-                <Image src={capa} alt={titulo} />
-                <Infos>
+            <S.Card>
+                <S.Image src={capa} alt={titulo} />
+                <S.Infos>
                     <Tag size='small'>{tipo}</Tag>
-                </Infos>
-                <ContainerTitle>
-                    <Title>{titulo}</Title>
+                </S.Infos>
+                <S.ContainerTitle>
+                    <S.Title>{titulo}</S.Title>
                     <div style={{display: 'flex'}}>
-                    <Assessment>{avaliacao}</Assessment>
-                    <Star src={star} alt={titulo} />
+                    <S.Assessment>{avaliacao}</S.Assessment>
+                    <S.Star src={star} alt={titulo} />
                     </div>
-                </ContainerTitle>
-                <Description>
+                </S.ContainerTitle>
+                <S.Description>
                     {descricao}
-                </Description>
-                <ButtonLink to={`/food/${id}`}>Saiba mais</ButtonLink>
-            </Card>
+                </S.Description>
+                <S.ButtonLink to={`/food/${id}`}>Saiba mais</S.ButtonLink>
+            </S.Card>
         </>
     )
 }

@@ -1,19 +1,18 @@
 import styled from "styled-components";
-import { ButtonAdicionar, cores } from "../../styles";
-import Button from "../Button";
+import { ButtonAdicionar, colors } from "../../styles";
 
 export const Form  =styled.form`
     h2 {
         font-size: 16px;
         font-weight: bold;
-        color: ${cores.branco};
+        color: ${colors.white};
         margin-bottom: 16px;
     }
 
     label {
         display: block;
         font-size: 14px;
-        color: ${cores.branco};
+        color: ${colors.white};
     }
 
     input {
@@ -40,13 +39,13 @@ export const Form  =styled.form`
 export const Confirmation = styled.div`
     h2 {
         font-size: 16px;
-        color: ${cores.branco};
+        color: ${colors.white};
         margin-bottom: 16px;
     }
 
     p {
         font-size: 14px;
-        color: ${cores.branco};
+        color: ${colors.white};
         line-height: 22px;
         margin-bottom: 24px;
     }

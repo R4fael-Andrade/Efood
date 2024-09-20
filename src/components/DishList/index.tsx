@@ -1,19 +1,16 @@
-
 import Dish from '../Dish'
-import { List, Container } from './styles'
 import { Restaurante } from '../../pages/Home'
-import { useEffect } from 'react'
+
+import * as S from './styles'
 
 export type Props = {
     dish: Restaurante[]
 }
 
 const DishList = ({ dish }: Props) => {
-
-
     return (
-    <Container>
-        <List>
+    <S.Container>
+        <S.List>
             {dish.map((infor) => (
                 <Dish 
                     avaliacao={infor.avaliacao}
@@ -27,8 +24,8 @@ const DishList = ({ dish }: Props) => {
                     descricao={infor.descricao}
                 />
             ))}
-        </List>
-    </Container>
+        </S.List>
+    </S.Container>
 )}
 
 export default DishList

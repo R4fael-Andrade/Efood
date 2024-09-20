@@ -1,7 +1,7 @@
-
 import CardFood from '../CardFood'
-import { List } from './styles'
 import { CardapioItem } from '../../pages/Home'
+
+import { List } from './styles'
 
 type Props = {
     food: CardapioItem[]

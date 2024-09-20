@@ -1,13 +1,15 @@
 import { useDispatch } from "react-redux";
-import * as S from "./styles";
+import { useState } from "react";
 import {ButtonAdicionar} from '../../styles'
 
 import { adicionar } from "../../store/reducers/carrinho";
+import { open } from "../../store/reducers/carrinho";
+
+import { CardapioItem } from '../../pages/Home'
+import Button from "../Button";
 
 import close from "../../assets/images/fechar.png";
-import { useState } from "react";
-import { CardapioItem } from '../../pages/Home'
-import { open } from "../../store/reducers/carrinho";
+import * as S from "./styles";
 
 export const formataPreco = (preco = 0) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -47,9 +49,12 @@ const CardFood = ({
                 <S.Image src={foto} />
                 <S.Title>{nome}</S.Title>
                 <S.Description>{descricao.slice(0, 240) + '...'}</S.Description>
-                <ButtonAdicionar onClick={handleAdicionarAoCarrinho}>
+                <Button 
+                type="button"
+                title="Adicionar ao carrinho"
+                onClick={handleAdicionarAoCarrinho}>
                     Adicionar ao carrinho
-                </ButtonAdicionar>
+                </Button>
             </S.Card>
         </li>
         <S.Modal className={modalOpen ? "visivel" : ""}>

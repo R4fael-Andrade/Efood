@@ -1,9 +1,9 @@
 import styled, {createGlobalStyle} from 'styled-components'
 
-export const cores = {
-    laranja: '#E66767',
-    branco: '#FFF8F2',
-    footer: '#FFEBD9'
+export const colors = {
+    orange: '#E66767',
+    white: '#FFF8F2',
+    gray: '#FFEBD9'
 }
 
 export const GlobalCss = createGlobalStyle`
@@ -13,11 +13,11 @@ export const GlobalCss = createGlobalStyle`
         box-sizing: border-box;
         font-family: Roboto, sans-serif;
         list-style: none;
-        color: ${cores.laranja}
+        color: ${colors.orange}
     }
 
     body {
-        background-color: ${cores.branco};
+        background-color: ${colors.white};
         width: 100%;
     }
 
@@ -34,8 +34,8 @@ export const GlobalCss = createGlobalStyle`
 `
 
 export const ButtonAdicionar = styled.button`
-    background-color: ${cores.branco};
-    color: ${cores.laranja};
+    background-color: ${colors.white};
+    color: ${colors.orange};
     font-size: 14px; 
     padding: 4px;
     width: 100%;

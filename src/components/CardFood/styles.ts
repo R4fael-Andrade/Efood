@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { ButtonAdicionar, cores } from "../../styles";
+import { ButtonAdicionar, colors } from "../../styles";
 
 export const Card = styled.div`
     width: 320px;
-    background-color: ${cores.laranja};
+    background-color: ${colors.orange};
     padding: 8px;
     margin: 0;
 
@@ -18,13 +18,13 @@ export const Image = styled.img`
     width: 100%;
     `
 export const Title = styled.h2`
-    color: ${cores.branco};
+    color: ${colors.white};
     font-size: 16px;
     `
 export const Description = styled.p`
     font-size: 14px;
     margin: 8px 0;
-    color: ${cores.branco};
+    color: ${colors.white};
 `
 
 export const Modal =  styled.div`
@@ -57,7 +57,7 @@ export const ModalContent = styled.div`
     position: relative;
     z-index: 1;
     padding: 32px;
-    background-color: ${cores.laranja};
+    background-color: ${colors.orange};
     
     header {
         display: flex;
@@ -87,14 +87,14 @@ export const ModalContent = styled.div`
     }
     
     h3 {
-    color: ${cores.branco};
+    color: ${colors.white};
     font-size: 18px;
     font-weight: bold;
 }
 
     p { 
         margin: 16px 0;
-        color: ${cores.branco};
+        color: ${colors.white};
         font-size: 14px;
     }
 

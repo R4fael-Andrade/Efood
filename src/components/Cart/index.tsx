@@ -1,32 +1,28 @@
-import * as S from './styles'
-import {ButtonAdicionar} from '../../styles'
 import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
+
 import { RootReducer } from '../../store'
 import {close, remove, hidden} from '../../store/reducers/carrinho'
+
 import { formataPreco } from '../CardFood'
 import Checkout from '../Checkout'
-import { Navigate } from 'react-router-dom'
-import { usePurchaseMutation } from '../../services/api'
 import Button from '../Button'
-import { useState } from 'react'
+
+import { usePurchaseMutation } from '../../services/api'
 import { getTotalPrice } from '../../utils'
 
+import * as S from './styles'
 
 const Cart = () => {
     const {isOpen, itens, isHidden} = useSelector((state: RootReducer) => state.carrinho)
-    const [ purchase, {data, isSuccess, isLoading} ] = usePurchaseMutation()
+    const [ purchase, {isSuccess } ] = usePurchaseMutation()
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const dispatch = useDispatch()
 
     const closeCart = () => {
         dispatch(close())
     }
-
-    // const getTotalPrice = () => {
-    //     return itens.reduce((acumulador: number, valorAtual) => {
-    //         return (acumulador += valorAtual.preco!)
-    //     }, 0)
-    // }
 
     const removeItem = (id: number) => {
         dispatch(remove(id))
@@ -75,7 +71,6 @@ const Cart = () => {
                     {isHidden && (
                         <Checkout />
                     )}
-                
             </S.Sidebar>      
     </S.CartContainer >
     )

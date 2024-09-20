@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ButtonAdicionar, cores } from "../../styles";
+import { ButtonAdicionar, colors } from "../../styles";
 import lixeira from '../../assets/images/lixeira.png'
 
 export const Overlay = styled.div`
@@ -30,7 +30,7 @@ export const CartContainer  = styled.li`
     `
 
 export const Sidebar = styled.aside`
-    background-color: ${cores.laranja};
+    background-color: ${colors.orange};
     z-index: 1;
     max-width: 360px;
     width: 100%; 
@@ -43,7 +43,7 @@ export const Sidebar = styled.aside`
     }
 
     ${ButtonAdicionar} {
-        background-color: ${cores.footer};
+        background-color: ${colors.gray};
     }
 
     .hidden-cart {
@@ -53,7 +53,7 @@ export const Sidebar = styled.aside`
 
 export const Cartitem = styled.li`
     display: flex;
-    background-color: ${cores.branco};
+    background-color: ${colors.white};
     position: relative;
     padding: 8px;
     margin-bottom: 16px;
@@ -89,10 +89,10 @@ export const BarInfor = styled.div`
     margin-bottom: 16px;
 
     P {
-        color: ${cores.branco};
+        color: ${colors.white};
     }
 
     span {
-        color: ${cores.branco};
+        color: ${colors.white};
     }
 `

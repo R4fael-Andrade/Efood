@@ -1,21 +1,24 @@
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from "react"
 import { useFormik } from "formik"
 import * as Yup from 'yup'
-import * as S from './styles'
-import { useDispatch, useSelector } from "react-redux"
+import InputMask from 'react-input-mask'
+
 import { clear, display } from '../../store/reducers/carrinho'
 import { usePurchaseMutation } from "../../services/api"
 import { RootReducer } from "../../store"
+
 import Button from "../Button"
-import { useEffect, useState } from "react"
 import { formataPreco } from "../CardFood"
-import InputMask from 'react-input-mask'
+
 import { getTotalPrice } from "../../utils"
+
+import * as S from './styles'
 
 const Checkout = () => {
     const [ purchase, {data, isSuccess, isLoading} ] = usePurchaseMutation()
-    const {itens, menuCardOpen} = useSelector((state: RootReducer) => state.carrinho)
+    const { itens } = useSelector((state: RootReducer) => state.carrinho)
     const [isPaymentFormVisible, setPaymentFormVisible] = useState(false)
-    const [orderConfirmation, setOrderConfirmation] = useState(false)
     const [formAdress, setFormAdress] = useState(true)
     const dispatch = useDispatch()
 
@@ -97,9 +100,6 @@ const Checkout = () => {
             }catch (error) {
                     console.error('Erro ao finalizar a compra', error)
                 }
-            
-            // setOrderConfirmation(true)
-            // setPaymentFormVisible(false)
         }
     })
 
@@ -121,25 +121,12 @@ const Checkout = () => {
         setFormAdress(true)
         setPaymentFormVisible(false)
     }
-    // useEffect(() => {
-    //     if (isSuccess && data) {
-    //         setOrderConfirmation(true)
-    //         setPaymentFormVisible(false)
-    //     }
-    // }, [isSuccess, data])
 
     useEffect(() => {
         if(isSuccess) {
             dispatch(clear())
-            // returnCart()
         }
     }, [isSuccess, dispatch])
-
-
-    // if (itens.length === 0 && !isSuccess) {
-    //     return <Navigate to="/" />
-    // }
-
 
     return (
         <>
@@ -309,7 +296,6 @@ const Checkout = () => {
             )}
                 </>
             )}
-
         </>
     )
 }

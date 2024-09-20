@@ -1,11 +1,13 @@
-import {HeaderContainer, Titles, LogoImg, ContainerPresentation, TagPresentation, TitlePresentation, LinkTitle} from './styles'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/carrinho'
 
 import fundoHeader from '../../assets/images/fundo.png'
 import logoImg from '../../assets/images/logoEfood.png'
 import apresentacao from '../../assets/images/imgApresentacao.png'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { open } from '../../store/reducers/carrinho'
+
+import * as S from './styles'
 
 const Header = () => {
     const itens = useSelector((state:RootReducer) => state.carrinho.itens)
@@ -17,23 +19,23 @@ const Header = () => {
 
     return (
         <>
-            <HeaderContainer style={{backgroundImage: `url(${fundoHeader})`}} >
+            <S.HeaderContainer style={{backgroundImage: `url(${fundoHeader})`}} >
                 <div className="container">
-                <LinkTitle to="/">Restaurantes</LinkTitle>
-                <LogoImg src={logoImg} />
-                <Titles onClick={openCart} > {itens.length} produto(s) no carrinho</Titles>
+                <S.LinkTitle to="/">Restaurantes</S.LinkTitle>
+                <S.LogoImg src={logoImg} />
+                <S.Titles onClick={openCart} > {itens.length} produto(s) no carrinho</S.Titles>
                 </div>
-            </HeaderContainer>
-            <ContainerPresentation style={{backgroundImage: `url(${apresentacao})`}}>
+            </S.HeaderContainer>
+            <S.ContainerPresentation style={{backgroundImage: `url(${apresentacao})`}}>
                 <div className="container">
-                    <TagPresentation>
+                    <S.TagPresentation>
                         Italiana
-                    </TagPresentation>
-                    <TitlePresentation>
+                    </S.TagPresentation>
+                    <S.TitlePresentation>
                         La Dolce Vita Trattoria
-                    </TitlePresentation>
+                    </S.TitlePresentation>
                 </div>
-            </ContainerPresentation>
+            </S.ContainerPresentation>
         </>
     )
 }

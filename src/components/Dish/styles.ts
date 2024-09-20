@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 import { Link } from "react-router-dom";
 
 export const Card = styled.div`
     width: 472px;
-    border: 1px solid ${cores.laranja};
+    border: 1px solid ${colors.orange};
     position: relative;
     background-color: #fff;
     height: 400px;
@@ -57,8 +57,8 @@ export const Image = styled.img`
 `
 
 export const More = styled.a`
-    background-color: ${cores.laranja};
-    color: ${cores.branco};
+    background-color: ${colors.orange};
+    color: ${colors.white};
     font-size: 14px;
     font-weight: bold;
     padding: 6px 4px ;
@@ -69,8 +69,8 @@ export const More = styled.a`
 `
 
 export const ButtonLink = styled(Link)`
-    background-color: ${cores.laranja};
-    color: ${cores.branco};
+    background-color: ${colors.orange};
+    color: ${colors.white};
     font-size: 14px;
     font-weight: bold;
     padding: 6px 4px;

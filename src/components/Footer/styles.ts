@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const FooterContainer = styled.footer`
     padding: 40px 0 ; 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${cores.footer};
+    background-color: ${colors.gray};
     flex-direction: column;
 `
 export const LogoImg = styled.img`
