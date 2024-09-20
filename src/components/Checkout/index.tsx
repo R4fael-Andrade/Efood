@@ -177,7 +177,7 @@ const Checkout = () => {
                 className={checkInputHasError('cidade') ? 'error' : ''}
                 />
                 <div>
-                <div>
+                <S.InputGroup maxWidth="160px">
                 <label htmlFor="cep">CEP</label>
                 <InputMask type="text" id="cep"
                 name="cep"
@@ -187,8 +187,8 @@ const Checkout = () => {
                 className={checkInputHasError('cep') ? 'error' : ''}
                 mask="99999-999"
                 />
-                </div>
-                <div>
+                </S.InputGroup>
+                <S.InputGroup maxWidth="130px">
                 <label htmlFor="number">Número</label>
                 <input type="text" id="number"
                 name="numero"
@@ -197,7 +197,7 @@ const Checkout = () => {
                 onBlur={form.handleBlur}
                 className={checkInputHasError('numero') ? 'error' : ''}
                 />
-                </div>
+                </S.InputGroup>
                 </div>
                 <label htmlFor="complement">Complemento (opcional)</label>
                 <input type="text" id="complement"
