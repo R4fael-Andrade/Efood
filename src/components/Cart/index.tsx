@@ -13,6 +13,7 @@ import { usePurchaseMutation } from '../../services/api'
 import { getTotalPrice } from '../../utils'
 
 import * as S from './styles'
+import React from 'react'
 
 const Cart = () => {
     const {isOpen, itens, isHidden} = useSelector((state: RootReducer) => state.carrinho)
@@ -47,8 +48,8 @@ const Cart = () => {
                 <div className={!isHidden ? '' : 'hidden-cart'}>
                 <ul>
                     {itens.map((item) => (
-                <>
-                    <S.Cartitem key={item.id}>
+                <React.Fragment key={item.id}>
+                    <S.Cartitem>
                         <img src={item.foto} alt={item.nome} />
                         <div>
                             <h3>{item.nome}</h3>
@@ -56,7 +57,7 @@ const Cart = () => {
                         </div>
                         <button type='button' onClick={() => removeItem(item.id)} />
                     </S.Cartitem>
-                </>
+                </React.Fragment>
                     ))}
                 </ul>
                     <S.BarInfor>
