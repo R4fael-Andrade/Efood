@@ -207,23 +207,28 @@ const Checkout = () => {
                 onBlur={form.handleBlur}
                 className={checkInputHasError('complemento') ? 'error' : ''}
                 />
-        
-                <Button
-                title="Clique aqui para finalizar a compra"
-                type="button"
-                onClick={form.handleSubmit}
-                disabled={isLoading}
-                >
-                    Continuar com o pagamento
-                </Button>
-        
-                <Button
-                type="button"
-                title="Voltar para o carrinho"
-                onClick={returnCart}>
-                    Voltar para o carrinho
-                    </Button>
-                    </S.Form>
+
+                <S.ButtonGroup>
+                    <div>
+                        <Button
+                        title="Clique aqui para finalizar a compra"
+                        type="button"
+                        onClick={form.handleSubmit}
+                        disabled={isLoading}
+                        >
+                            Continuar com o pagamento
+                        </Button>
+            
+                        <Button
+                        type="button"
+                        title="Voltar para o carrinho"
+                        onClick={returnCart}>
+                            Voltar para o carrinho
+                        </Button>
+                    </div>
+                </S.ButtonGroup>
+
+                </S.Form>
                 </>
             )}
 
@@ -239,6 +244,8 @@ const Checkout = () => {
                     onBlur={paymentForm.handleBlur}
                     className={checkInputPaymentsHasError('nameCard') ? 'error' : ''}
                     />
+                    <div>
+                    <S.InputGroup maxWidth="228px">
                     <label htmlFor="numberCard">Número do cartão</label>
                     <InputMask type="text" id="numberCard"
                     name="numberCard"
@@ -248,6 +255,8 @@ const Checkout = () => {
                     className={checkInputPaymentsHasError('numberCard') ? 'error' : ''}
                     mask="9999 9999 9999 9999"
                     />
+                    </S.InputGroup>
+                    <S.InputGroup maxWidth="80px">
                     <label htmlFor="codeCard">CVV</label>
                     <InputMask type="text" id="codeCard"
                     name="codeCard"
@@ -257,6 +266,10 @@ const Checkout = () => {
                     className={checkInputPaymentsHasError('codeCard') ? 'error' : ''}
                     mask="999"
                     />
+                    </S.InputGroup>
+                    </div>
+                    <div>
+                    <S.InputGroup maxWidth="155px">
                     <label htmlFor="expiresMonth">Mês de vencimento</label>
                     <InputMask type="text" id="expiresMonth"
                     name="expiresMonth"
@@ -266,6 +279,8 @@ const Checkout = () => {
                     className={checkInputPaymentsHasError('expiresMonth') ? 'error' : ''}
                     mask="99"
                     />
+                    </S.InputGroup>
+                    <S.InputGroup maxWidth="155px">
                     <label htmlFor="expiresYear">Ano de vencimento</label>
                     <InputMask type="text" id="expiresYear"
                     name="expiresYear"
@@ -275,22 +290,30 @@ const Checkout = () => {
                     className={checkInputPaymentsHasError('expiresYear') ? 'error' : ''}
                     mask="99"
                     />
-                    <Button
-                    title="Finalizar compra"
-                    type="submit"
-                    disabled={isLoading}
-                    onClick={paymentForm.handleSubmit}
-                    >
-                        {isLoading ? 'Finalizando compra...' : 'Finalizar compra'}
-                    </Button>
-                    <Button
-                    title="Finalizar compra"
-                    type="button"
-                    disabled={isLoading}
-                    onClick={returnAdress}
-                    >
-                        Voltar para edição de endereço 
-                    </Button>
+                    </S.InputGroup>
+                    </div>
+
+                    <S.ButtonGroup>
+                        <div>
+                            <Button
+                            title="Finalizar compra"
+                            type="submit"
+                            disabled={isLoading}
+                            onClick={paymentForm.handleSubmit}
+                            >
+                                {isLoading ? 'Finalizando compra...' : 'Finalizar compra'}
+                            </Button>
+                            <Button
+                            title="Finalizar compra"
+                            type="button"
+                            disabled={isLoading}
+                            onClick={returnAdress}
+                            >
+                                Voltar para edição de endereço 
+                            </Button>
+                        </div>
+                    </S.ButtonGroup>
+
                 </S.Form>
                 </>
             )}

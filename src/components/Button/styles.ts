@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export const ButtonContainer = styled.button`
     font-weight: bold;
+    font-size: 14px;
     height: 24px;
     width: 100%;
     padding: 4px 0;
