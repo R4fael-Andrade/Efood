@@ -5,28 +5,43 @@ import { RootReducer } from '../../store'
 import {close, remove, hidden} from '../../store/reducers/carrinho'
 import { formataPreco } from '../CardFood'
 import Checkout from '../Checkout'
+import { Navigate } from 'react-router-dom'
+import { usePurchaseMutation } from '../../services/api'
+import Button from '../Button'
+import { useState } from 'react'
+import { getTotalPrice } from '../../utils'
 
 
 const Cart = () => {
     const {isOpen, itens, isHidden} = useSelector((state: RootReducer) => state.carrinho)
+    const [ purchase, {data, isSuccess, isLoading} ] = usePurchaseMutation()
+    const [shouldRedirect, setShouldRedirect] = useState(false);
     const dispatch = useDispatch()
 
     const closeCart = () => {
         dispatch(close())
     }
 
-    const getTotalPrice = () => {
-        return itens.reduce((acumulador: number, valorAtual) => {
-            return (acumulador += valorAtual.preco!)
-        }, 0)
-    }
+    // const getTotalPrice = () => {
+    //     return itens.reduce((acumulador: number, valorAtual) => {
+    //         return (acumulador += valorAtual.preco!)
+    //     }, 0)
+    // }
 
     const removeItem = (id: number) => {
         dispatch(remove(id))
     }
 
     const exibirEntrega = () => {
-        dispatch(hidden())
+        if (itens.length === 0 && !isSuccess) {
+            setShouldRedirect(true); 
+        } else {
+            dispatch(hidden())
+        }
+    }
+
+    if (shouldRedirect) {
+        return <Navigate to="/" />;
     }
 
     return (
@@ -50,9 +65,12 @@ const Cart = () => {
                 </ul>
                     <S.BarInfor>
                         <p>Valor total</p>
-                        <span>{formataPreco(getTotalPrice())}</span>
+                        <span>{formataPreco(getTotalPrice(itens))}</span>
                     </S.BarInfor>
-                <ButtonAdicionar onClick={exibirEntrega}>Continuar com a entrega</ButtonAdicionar>
+                <Button
+                type='button'
+                title='Clique para continuar com a entrega'
+                onClick={exibirEntrega}>Continuar com a entrega</Button>
                 </div>
                     {isHidden && (
                         <Checkout />

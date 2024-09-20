@@ -1,16 +1,15 @@
 import { useFormik } from "formik"
 import * as Yup from 'yup'
-import { ButtonAdicionar } from "../../styles"
 import * as S from './styles'
 import { useDispatch, useSelector } from "react-redux"
-import { clear, display, paymentOpen } from '../../store/reducers/carrinho'
+import { clear, display } from '../../store/reducers/carrinho'
 import { usePurchaseMutation } from "../../services/api"
 import { RootReducer } from "../../store"
 import Button from "../Button"
 import { useEffect, useState } from "react"
 import { formataPreco } from "../CardFood"
 import InputMask from 'react-input-mask'
-import { Navigate } from "react-router-dom"
+import { getTotalPrice } from "../../utils"
 
 const Checkout = () => {
     const [ purchase, {data, isSuccess, isLoading} ] = usePurchaseMutation()
@@ -23,10 +22,6 @@ const Checkout = () => {
     const returnCart = () => {
         dispatch(display())
     }
-
-    // const openPayment = () => {
-    //     dispatch(paymentOpen())
-    // }
 
     const form = useFormik({
         initialValues: {
@@ -136,12 +131,15 @@ const Checkout = () => {
     useEffect(() => {
         if(isSuccess) {
             dispatch(clear())
+            // returnCart()
         }
     }, [isSuccess, dispatch])
 
-    if (itens.length === 0 && !isSuccess) {
-        return <Navigate to='/' />
-    }
+
+    // if (itens.length === 0 && !isSuccess) {
+    //     return <Navigate to="/" />
+    // }
+
 
     return (
         <>
@@ -158,6 +156,7 @@ const Checkout = () => {
                 type="link"
                 title="Concluir pedido"
                 to="/"
+                onClick={returnCart}
                 >Concluir</Button>
                 </S.Confirmation>
             ) : (
@@ -231,9 +230,12 @@ const Checkout = () => {
                     Continuar com o pagamento
                 </Button>
         
-                <ButtonAdicionar onClick={returnCart}>
+                <Button
+                type="button"
+                title="Voltar para o carrinho"
+                onClick={returnCart}>
                     Voltar para o carrinho
-                    </ButtonAdicionar>
+                    </Button>
                     </S.Form>
                 </>
             )}
@@ -241,7 +243,7 @@ const Checkout = () => {
             {isPaymentFormVisible && (
                 <>
                 <S.Form onSubmit={paymentForm.handleSubmit}>
-                    <h2>Pagamento - valor a pagar {formataPreco()} </h2>
+                    <h2>Pagamento - valor a pagar {formataPreco(getTotalPrice(itens))} </h2>
                     <label htmlFor="nameCard">Nome no cartão</label>
                     <input type="text" id="nameCard"
                     name="nameCard"
