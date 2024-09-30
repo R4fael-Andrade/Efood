@@ -40,8 +40,7 @@ const Checkout = () => {
             endereco: Yup.string().required('O campo é obrigatório'),
             cidade: Yup.string().required('O campo é obrigatório'),
             cep: Yup.string().required('O campo é obrigatório'),
-            numero: Yup.string().required('O campo é obrigatório'),
-            complemento: Yup.string().required('O campo é obrigatório')
+            numero: Yup.string().required('O campo é obrigatório')
         }),
         onSubmit: (values) => {
             setPaymentFormVisible(true)

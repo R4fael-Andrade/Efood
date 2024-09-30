@@ -52,7 +52,7 @@ const CardFood = ({
                 <Button 
                 type="button"
                 title="Adicionar ao carrinho"
-                onClick={handleAdicionarAoCarrinho}>
+                onClick={() => setModalOpen(true)}>
                     Adicionar ao carrinho
                 </Button>
             </S.Card>
